@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal Website</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e0f7fa; /* Light blue background */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            transition: background-color 0.5s;
+        }
+
+        .container {
+            text-align: center;
+            border: 2px solid #ff4081; /* Pink border */
+            border-radius: 15px;
+            padding: 30px;
+            background-color: #ffffff; /* White background */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s;
+            width: 90%; /* Responsive width */
+            max-width: 600px; /* Maximum width for larger screens */
+        }
+
+        h1 {
+            font-size: 2.5rem; /* Larger heading */
+            color: #ff4081; /* Pink color */
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2rem; /* Slightly larger paragraph text */
+            margin-bottom: 20px;
+            line-height: 1.5; /* Improved line height for readability */
+        }
+
+        button {
+            background-color: #ff4081; /* Pink button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+            margin: 5px;
+        }
+
+        button:hover {
+            background-color: #f50057; /* Darker pink on hover */
+            transform: scale(1.05);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #proposalMessage {
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        #proposalMessage.show {
+            opacity: 1;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            body {
+                font-size: 1rem; /* Base font size for mobile */
+            }
+            h1 {
+                font-size: 2rem; /* Smaller heading for mobile */
+            }
+        }
+
+        /* Decorative Heart */
+        .heart {
+            color: #ff4081;
+            font-size: 50px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <audio id="backgroundMusic" loop>
+        <source src="song1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div class="container">
+        <h1>Will You Be My Girlfriend?</h1>
+        <p>This is a special proposal just for u . Click the button below to see my proposal for u!</p>
+        <div class="heart">❤️</div>
+        <button id="playButton">Play Music</button>
+        <button id="stopButton" disabled>Stop Music</button>
+        <button id="proposalButton">Show Proposal</button>
+        <div id="proposalMessage" class="hidden">
+            <h2>💖 I Really Like You! 💖</h2>
+            <p>Will you be my girlfriend?I promise to make you happy😍!True love never dies,
+                Because true love always
+                waits.</p>
+        </div>
+    </div>
+    <script>
+        const music = document.getElementById('backgroundMusic');
+
+        // Play background music when the play button is clicked
+        document.getElementById('playButton').addEventListener('click', function() {
+            music.play();
+            this.disabled = true; // Disable the play button after playing
+            document.getElementById('stopButton').disabled = false; // Enable the stop button
+        });
+
+        // Stop background music when the stop button is clicked
+        document.getElementById('stopButton').addEventListener('click', function() {
+            music.pause();
+            music.currentTime = 0; this.disabled = true; // Disable the stop button after stopping
+            document.getElementById('playButton').disabled = false; // Enable the play button
+        });
+
+        // Show the proposal message when the proposal button is clicked
+        document.getElementById('proposalButton').addEventListener('click', function() {
+            const proposalMessage = document.getElementById('proposalMessage');
+            proposalMessage.classList.toggle('hidden');
+            proposalMessage.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
